@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'friendly_id', '~> 5.0.0'
 
 
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
