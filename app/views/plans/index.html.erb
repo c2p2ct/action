@@ -1,0 +1,13 @@
+<h1>Listing plans</h1>
+
+<% @plans.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |plan| %>
+      <div class="span4">
+        <%= image_tag plan.picture_url, :width => '30%' if plan.picture.present?%>
+        <h4><%= link_to plan.name, plan %></h4>
+        <%= plan.description %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

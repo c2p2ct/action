@@ -1,0 +1,58 @@
+
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="span9" > 
+    <%= image_tag(@plan.picture_url, :width => "20%" ) if @plan.picture.present? %>
+  </div>
+
+  <div class="span3">
+    <p><h2><%= @plan.name %></h2></p>
+    <p><b></b><%= @plan.description %></p>
+    <p>
+    </p>
+  </div>
+</div>
+
+
+
+
+<button type="button" class="btn btn-success">Add Plan to My Calendar</button>
+
+<p>
+<div class="table-responsive">
+  <legend>Action Plan</legend>
+<table class="table table-hover table-bordered">
+<th>Week</th>
+  <th>Step</th>
+<tbody>
+<% @steps.each do |step| %>
+  <div>
+  	<tr>
+    <td><strong><%= step.sequence %></strong></td>
+
+	<td>   <p><%= step.planstep %></p></td>
+	</tr>
+  </div>
+<% end %>
+</tbody>
+</table>
+<button type="button" class="btn btn-success">Add Plan to My Calendar</button>
+</br></p>
+<legend>Comments</legend>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= comment.user_name %></strong>
+    <br />
+    <p><%= comment.body %></p>
+
+<% end %>
+
+
+
+
+<%= render 'comments/form' %>
+
