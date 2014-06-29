@@ -1,58 +1,64 @@
-
-
-
-
 <p id="notice"><%= notice %></p>
-
 <div class="row">
   <div class="span9" > 
-    <%= image_tag(@plan.picture_url, :width => "20%" ) if @plan.picture.present? %>
+      <div class="jumbotron">
+        <table class="table">
+          <tr>
+            <td> <%= image_tag(@plan.picture_url, :width => "40%" ) if @plan.picture.present? %> </td>
+            <td><h1>Action Plan: </br><%= @plan.name %> </h1>
+                <p><a class="btn btn-success btn-lg" role="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Action_App_Step1&add=julia.clavien@gmail.com&location=Somewhere&calendar-label=Outgoing">Add to my calendar</a></p> </td>
+          </tr>
+         </table>   
+      </div>
   </div>
+
+</br>
 
   <div class="span3">
-    <p><h2><%= @plan.name %></h2></p>
-    <p><b></b><%= @plan.description %></p>
-    <p>
-    </p>
-  </div>
-</div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+           <strong> <%= @plan.name %> </strong> (<%= @plan.id %>)
+      </div>
+                <div class="panel-body">
+                        <p><%= @plan.description %></p>
+                        <p><%= @plan.amazonlink %></p>
+
+
+                      <div class="table-responsive">
+                        <legend>Action Plan</legend>
+                      <table class="table table-hover table-bordered">
+                      <th>Week</th>
+                        <th>Step</th>
+                      <tbody>
+                      <% @steps.each do |step| %>
+                        <div>
+                          <tr>
+                          <td><strong><%= step.sequence %></strong></td>
+
+                        <td>   <p><%= step.planstep %></p></td>
+                        </tr>
+                        </div>
+                      <% end %>
+                      </tbody>
+                      </table>
+                    <a class="btn btn-success" role="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Action_App_Step1&add=julia.clavien@gmail.com&location=Somewhere&calendar-label=Outgoing">Add to my calendar</a>
+                        </div>
+                      </div>
+
+                </div>
+    </div>
 
 
 
 
-<button type="button" class="btn btn-success">Add Plan to My Calendar</button>
 
-<p>
-<div class="table-responsive">
-  <legend>Action Plan</legend>
-<table class="table table-hover table-bordered">
-<th>Week</th>
-  <th>Step</th>
-<tbody>
-<% @steps.each do |step| %>
-  <div>
-  	<tr>
-    <td><strong><%= step.sequence %></strong></td>
 
-	<td>   <p><%= step.planstep %></p></td>
-	</tr>
-  </div>
-<% end %>
-</tbody>
-</table>
-<button type="button" class="btn btn-success">Add Plan to My Calendar</button>
 </br></p>
 <legend>Comments</legend>
 <% @comments.each do |comment| %>
   <div>
-    <strong><%= comment.user_name %></strong>
-    <br />
-    <p><%= comment.body %></p>
-
+    <strong><%= comment.user_name %></strong> - <%= comment.body %>
 <% end %>
-
-
-
 
 <%= render 'comments/form' %>
 

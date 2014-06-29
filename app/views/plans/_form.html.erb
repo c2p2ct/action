@@ -14,26 +14,27 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name,  :class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description,  :class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :duration %><br>
-    <%= f.number_field :duration %>
+    <%= f.number_field :duration,  :class => 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :amazonlink %><br>
-    <%= f.text_field :amazonlink %>
+    <%= f.text_field :amazonlink,  :class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :picture %><br>
-    <%= f.file_field :picture %>
-  </div>
+    <%= f.file_field :picture,  :class => 'form-control' %>
+  </div></br>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Plan', :class => 'btn' %>
   </div>
 <% end %>
