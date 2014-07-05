@@ -1,40 +1,12 @@
-<%= form_for(@plan) do |f| %>
-  <% if @plan.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
-
-      <ul>
-      <% @plan.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@plan) do |f| %>
 
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name,  :class => 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description,  :class => 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :duration %><br>
-    <%= f.number_field :duration,  :class => 'form-control' %>
-  </div>
+    <%= f.input :name , label: 'name', hint: 'Name please', placeholder: 'Plan name', required: true %>
+    <%= f.input :description , label: 'description details', hint: 'description info', required: true %>
+    <%= f.input :duration , label: 'duration details', hint: 'duration info', required: true %>
+    <%= f.input :amazonlink , label: 'amazonlink details', hint: 'amazonlink info', required: true %>
+    <%= f.input :picture , label: 'picture details', hint: 'picture info', required: true %>
+    <%= f.button :submit %>
 
-  <div class="field">
-    <%= f.label :amazonlink %><br>
-    <%= f.text_field :amazonlink,  :class => 'form-control' %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br>
-    <%= f.file_field :picture,  :class => 'form-control' %>
-  </div></br>
 
-  <div class="actions">
-    <%= f.submit 'Create Plan', :class => 'btn' %>
-  </div>
 <% end %>

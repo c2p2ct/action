@@ -1,32 +1,10 @@
-<%= form_for(@step) do |f| %>
-  <% if @step.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@step.errors.count, "error") %> prohibited this step from being saved:</h2>
-
-      <ul>
-      <% @step.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :sequence %><br>
-    <%= f.number_field :sequence %>
-  </div>
-  <div class="field">
-    <%= f.label :planstep %><br>
-    <%= f.text_area :planstep %>
-  </div>
- <div class="field">
-    <%= f.label :plan_id %><br>
-    <%= f.text_area :plan_id %>
-  </div>
+<%= simple_form_for(@step) do |f| %>
 
 
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.input :sequence , label: 'Sequence', hint: 'Integer please', placeholder: '0', required: true %>
+    <%= f.input :planstep , label: 'Step details', hint: 'Step info', required: true %>
+    <%= f.association :plan %>
+     <%= f.button :submit %>
+
 <% end %>

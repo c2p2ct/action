@@ -4,8 +4,16 @@ class PlansController < ApplicationController
   # GET /plans
   # GET /plans.json
   def index
-    @plans = Plan.all
+    if params[:search]
+      @plans = Plan.search(params[:search]).order("created_at DESC")
+
+    else    
+      @plans = Plan.all
+    end
   end
+
+
+
 
   # GET /plans/1
   # GET /plans/1.json
