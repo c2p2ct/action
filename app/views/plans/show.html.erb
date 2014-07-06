@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
+
+
+
+
 <div class="row">
   <div class="span9" > 
       <div class="jumbotron">
@@ -11,39 +15,34 @@
          </table>   
       </div>
   </div>
-
 </br>
-
   <div class="span3">
     <div class="panel panel-default">
       <div class="panel-heading">
            <strong> <%= @plan.name %> </strong> (<%= @plan.id %>)
-      </div>
-                <div class="panel-body">
-                        <p><%= @plan.description %></p>
-                        <p><%= @plan.amazonlink %></p>
-
-
-                      <div class="table-responsive">
-                        <legend>Action Plan</legend>
-                      <table class="table table-hover table-bordered">
-                      <th>Week</th>
-                        <th>Step</th>
-                      <tbody>
-                      <% @steps.each do |step| %>
-                        <div>
-                          <tr>
-                          <td><strong><%= step.sequence %></strong></td>
-
-                        <td>   <p><%= step.planstep %></p></td>
-                        </tr>
-                        </div>
-                      <% end %>
-                      </tbody>
-                      </table>
-                    <a class="btn btn-success" role="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Action_App_Step1&add=julia.clavien@gmail.com&location=Somewhere&calendar-label=Outgoing">Add to my calendar</a>
-                        </div>
-                      </div>
+  </div>
+  <div class="panel-body">
+          <p><%= @plan.description %></p>
+          <p><%= @plan.amazonlink %></p>
+        <div class="table-responsive">
+          <legend>Action Plan</legend>
+        <table class="table table-hover table-bordered">
+        <th>Week</th>
+          <th>Step</th>
+        <tbody>
+        <% @steps.each do |step| %>
+          <div>
+            <tr>
+            <td><strong><%= step.sequence %></strong></td>
+          <td> <p><%= step.planstep %></p></td>
+          </tr>
+          </div>
+        <% end %>
+        </tbody>
+        </table>
+      <a class="btn btn-success" role="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Action_App_Step1&add=julia.clavien@gmail.com&location=Somewhere&calendar-label=Outgoing">Add to my calendar</a>
+          </div>
+        </div>
 
                 </div>
     </div>

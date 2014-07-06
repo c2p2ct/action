@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   resources :steps
-
   resources :comments
-
-  get 'pages/info'
-
   resources :plans
 
+  get 'pages/info'
+  get '/about'    => 'high_voltage/pages#show', id: 'about'
+  get '/contact'  => 'high_voltage/pages#show', id: 'contact'
+  get '/privacy'  => 'high_voltage/pages#show', id: 'privacy'
+  get '/terms'    => 'high_voltage/pages#show', id: 'terms'
+  get '/home', to: redirect('/')
+  root :to => 'high_voltage/pages#show', id: 'home'
 
-root :to => redirect('/plans')
+   # root :to => redirect('/plans')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -29,6 +29,9 @@ gem "cancan"
 
 gem "twitter-bootstrap-rails"
 
+gem 'high_voltage', '~> 2.2.0'
+
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

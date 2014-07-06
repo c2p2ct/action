@@ -1,3 +1,5 @@
+
+
 <div class="jumbotron">
   <h1>Action Plans</h1>
   <p>Here are lots of action plans, they are so helpful.</p>
@@ -7,6 +9,7 @@
   <p><a href= "pages/info/" class="btn btn-primary btn-lg" role="button">Learn more</a></p>
 </div>
 
+<div class="container"
 <% @plans.in_groups_of(3) do |group| %>
   <div class="row">
     <% group.compact.each do |plan| %>
@@ -22,3 +25,4 @@
     <% end %>
   </div>
 <% end %>
+  </div>
