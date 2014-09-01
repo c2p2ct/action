@@ -2,27 +2,35 @@
 
 <div class="jumbotron">
   <h1>Action Plans</h1>
-  <p>Here are lots of action plans, they are so helpful.</p>
+  <p>How to take action in 3 steps!</p>
     <p>Step 1: Choose your plan</p>
-    <p>Step 2: Add it to your calendar (Google, Outlook etc)</p>
+    <p>Step 2: Click the "Take Action" button to add the plan to your calendar and sign up for emails</p>
     <p>Step 3: Take action!</p>
   <p><a href= "pages/info/" class="btn btn-primary btn-lg" role="button">Learn more</a></p>
 </div>
 
-<div class="container"
+<!-- <div class="container"> -->
 <% @plans.in_groups_of(3) do |group| %>
   <div class="row">
     <% group.compact.each do |plan| %>
       <div class="span4">
-			        <div class="panel panel-default">
-					  <!-- Default panel contents -->
-					  <div class="panel-heading">  <h4><%= link_to plan.name, plan %></h4></div>
-					  <div class="panel-body">
-					    <p> <table class ="table"> <tr> <td><%= image_tag plan.picture_url, :width => '100px' if plan.picture.present?%></td>   <td><%= plan.description %> </br><strong>Weeks: <%= plan.duration %></strong></td></tr></p></table>
-					  </div>
+	        <div class="panel panel-default">
+			  <!-- Default panel contents -->
+			  <div class="panel-heading">  <h4><%= link_to plan.name, plan %></h4></div>
+			  <div class="panel-body">
+			    <p> 
+			    	<table class ="table">
+				       <tr> 
+				     	<td><%= image_tag plan.picture_url, :width => '100px' if plan.picture.present?%></td>
+				     	<td><%= plan.description %> </br>
+				     	<strong>Weeks: <%= plan.duration %></strong></td>
+				       </tr></p>
+				     </table>
+			  </div>
     	</div>
       </div>
     <% end %>
   </div>
 <% end %>
-  </div>
+</div>
+<!-- </div> -->

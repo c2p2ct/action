@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   get '/privacy'  => 'high_voltage/pages#show', id: 'privacy'
   get '/terms'    => 'high_voltage/pages#show', id: 'terms'
   get '/home', to: redirect('/')
-  root :to => 'high_voltage/pages#show', id: 'home'
 
-   # root :to => redirect('/plans')
+
+  # root :to => 'high_voltage/pages#show', id: 'home'
+
+    root :to => redirect('/plans')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

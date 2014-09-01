@@ -1,0 +1,33 @@
+body {
+  background-color: #CCCCCC;
+  color: #333333;
+  font-family: sans-serif;
+  font-size: 1em;
+  line-height: 1.65;
+  
+}
+
+
+#content {
+ background-color: #FFFFFF;
+ border-color: transparent;
+ -moz-box-shadow: 5px 7px 7px rgba(194, 194, 194, 0.3);
+ -moz-border-radius: 5px 5px 5px 5px;
+ -webkit-border-radius: 5px 5px 5px 5px;
+ border-width: 1px;
+ float: left;
+ min-height: 250px;
+ padding: 2%;
+ width: 50%;
+}
+
+#content h2 {
+  color: #666666;
+  font-weight: normal;
+}
+
+#footer {
+ float: left;
+  padding: 18px;
+  width: 64%;
+}

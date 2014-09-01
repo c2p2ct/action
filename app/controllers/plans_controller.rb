@@ -12,9 +12,6 @@ class PlansController < ApplicationController
     end
   end
 
-
-
-
   # GET /plans/1
   # GET /plans/1.json
   def show

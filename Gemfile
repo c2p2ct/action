@@ -18,7 +18,6 @@ group :development do
 end
 
 gem 'rails_admin'
-
 gem 'carrierwave'
 gem 'mini_magick', '3.5.0'
 gem 'devise'
@@ -28,10 +27,9 @@ gem 'heroku', '~> 3.8.4'
 gem "cancan"
 
 gem "twitter-bootstrap-rails"
-
 gem 'high_voltage', '~> 2.2.0'
-
-
+# gem 'fullcalendar-rails'
+gem 'icalendar', '~> 2.1.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

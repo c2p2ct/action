@@ -80,4 +80,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  require 'icalendar' 
+
+  PUBLIC_URL = "http://ancient-woodland-5867.herokuapp.com/"
+
 end
