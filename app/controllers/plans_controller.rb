@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:show, :edit, :update, :destroy]
+ before_action :set_plan, only: [:show, :edit, :update, :destroy]
+ skip_before_action :authenticate_user!
 
   # GET /plans
   # GET /plans.json
@@ -15,6 +16,7 @@ class PlansController < ApplicationController
   # GET /plans/1
   # GET /plans/1.json
   def show
+    
   # @plans = Plans.friendly.find(params[:id])
 
   # if request.path != plans_path(@plans)
@@ -35,7 +37,7 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
-
+    # @plan.user = current_user 
     respond_to do |format|
       if @plan.save
         format.html { redirect_to @plan, notice: 'Plan was successfully created.' }

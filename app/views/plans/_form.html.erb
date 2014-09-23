@@ -1,6 +1,5 @@
 <%= simple_form_for(@plan) do |f| %>
 
-
     <%= f.input :name , label: 'name', hint: 'Name please', placeholder: 'Plan name', required: true %>
     <%= f.input :description , label: 'description details', hint: '', required: true %>
     <%= f.input :duration , label: 'duration details', hint: '', required: true %>
@@ -8,5 +7,20 @@
     <%= f.input :picture , label: 'picture details', hint: '', required: true %>
     <%= f.button :submit %>
 
+<% end %>
 
+
+<%= simple_nested_form_for @plan do |f| %>
+	  <%= f.text_field :name %>
+	    <%= f.text_field :description %>
+	      <%= f.text_field :duration %>
+	        <%= f.text_field :amazonlink %>
+	          <%= f.text_field :picture %>
+	<%= f.fields_for :steps do |plansandsteps| %>
+	  <%= plansandsteps.text_field :planstep %>
+	  <%= plansandsteps.link_to_remove "Remove this step" %>
+	<% end %>
+	<p><%= f.link_to_add "Add a step", :steps %></p>
+
+    <%= f.button :submit %>
 <% end %>

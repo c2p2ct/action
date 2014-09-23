@@ -1,5 +1,6 @@
 class StepsController < ApplicationController
   before_action :set_step, only: [:show, :edit, :update, :destroy]
+ skip_before_action :authenticate_user!
 
   # GET /steps
   # GET /steps.json

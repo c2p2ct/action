@@ -13,21 +13,20 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :development do
-  gem 'meta_request'
-end
-
 gem 'rails_admin'
+gem 'sunspot'
 gem 'carrierwave'
+gem 'cloudinary'
 gem 'mini_magick', '3.5.0'
-gem 'devise'
 gem 'simple_form'
 gem 'friendly_id', '~> 5.0.0'
 gem 'heroku', '~> 3.8.4'
-gem "cancan"
-
+gem 'devise'
+gem 'rolify'
+gem 'cancan'
 gem "twitter-bootstrap-rails"
 gem 'high_voltage', '~> 2.2.0'
+gem 'nested_form'
 # gem 'fullcalendar-rails'
 gem 'icalendar', '~> 2.1.0'
 
@@ -49,8 +48,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -63,4 +60,17 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+group :development do 
+	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+	gem 'spring'
+    gem 'meta_request'
+	gem 'quiet_assets'
+	gem 'better_errors'
+	gem 'annotate'
+	gem 'rails_best_practices'
+end
+
+
 

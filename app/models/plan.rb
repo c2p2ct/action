@@ -3,7 +3,7 @@ class Plan < ActiveRecord::Base
 	mount_uploader :picture, PictureUploader
 	has_many :steps
 	has_many :comments
-
+  accepts_nested_attributes_for :steps, :allow_destroy => true
 
  	extend FriendlyId
   	friendly_id :name, use: :slugged
