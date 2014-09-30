@@ -18,11 +18,23 @@ class PlansController < ApplicationController
   def show
     
   # @plans = Plans.friendly.find(params[:id])
-
   # if request.path != plans_path(@plans)
   #   redirect_to @plans, status: :moved_permanently
   # end
   end
+
+ def add_to_calendar
+    @plan = Plan.find(params[:plan])
+    @steps = @plan.steps
+    #loop through plan steps
+
+    #insert calendar events OR insert 
+
+
+    redirect_to @plan
+    #success message
+  end
+
 
   # GET /plans/new
   def new
@@ -37,6 +49,7 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
+    
     # @plan.user = current_user 
     respond_to do |format|
       if @plan.save
@@ -83,12 +96,10 @@ class PlansController < ApplicationController
 
       @comments = @plan.comments.all
       @comment = @plan.comments.build
-
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:name, :description, :duration, :picture)
+      params.require(:plan).permit(:name, :description, :duration, :picture, :amazonlink, steps_attributes: [:id, :planstep, :_destroy])
     end
 end

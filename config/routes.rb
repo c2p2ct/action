@@ -7,7 +7,13 @@ Rails.application.routes.draw do
   
   resources :steps
   resources :comments
-  resources :plans
+
+  resources :plans do
+      member do
+        get :add_to_calendar
+      end
+  end      
+
 
   get 'pages/info'
   get '/about'    => 'high_voltage/pages#show', id: 'about'

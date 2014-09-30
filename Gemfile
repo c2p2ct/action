@@ -19,6 +19,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'mini_magick', '3.5.0'
 gem 'simple_form'
+gem 'nested_form'
 gem 'friendly_id', '~> 5.0.0'
 gem 'heroku', '~> 3.8.4'
 gem 'devise'
@@ -26,7 +27,9 @@ gem 'rolify'
 gem 'cancan'
 gem "twitter-bootstrap-rails"
 gem 'high_voltage', '~> 2.2.0'
-gem 'nested_form'
+gem 'acts-as-taggable-on'
+
+
 # gem 'fullcalendar-rails'
 gem 'icalendar', '~> 2.1.0'
 

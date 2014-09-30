@@ -21,7 +21,7 @@
   </div>
       <div class="panel-body">
               <p><%= @plan.description %></p>
-              <p><%= @plan.amazonlink %></p>
+              <p><%= @plan.amazonlink.html_safe if @plan.amazonlink %></p>
             <div class="table-responsive">
               <legend>Action Plan</legend>
               <table class="table table-hover table-bordered">
@@ -64,7 +64,11 @@
                 <div class="col-md-4">
                   <h2>Heading</h2>
                   <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                  <p><a class="btn btn-success btn-lg"  href="#" role="button">Add to Calendar &raquo;</a></p>
+                  <p>
+                <%= link_to 'Add to Calendar', add_to_calendar_plan_path(plan:@plan.id), class: 'btn btn-success' %>
+                  </p>
+
+                
                 </div>
                 <div class="col-md-4">
                   <h2>Heading</h2>
@@ -77,10 +81,8 @@
                   <p><a class="btn btn-success btn-lg"  href="#" role="button">Subscribe to Calls &raquo;</a></p>
                 </div>
               </div>
-
         </br>
       </div>
-
     
     <script src="libs/jquery-1.4.4.js"></script>
     <script src="hideshow.js"></script>

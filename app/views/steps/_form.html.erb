@@ -1,10 +1,6 @@
 <%= simple_form_for(@step) do |f| %>
-
-
-
-    <%= f.input :sequence , label: 'Sequence', hint: 'Integer please', placeholder: '0', required: true %>
+<%= f.input :sequence , label: 'Sequence', hint: 'Integer please', placeholder: '0', required: true %>
     <%= f.input :planstep , label: 'Step details', hint: 'Step info', required: true %>
     <%= f.association :plan %>
-     <%= f.button :submit %>
-
+    <%= f.button :submit %>
 <% end %>
