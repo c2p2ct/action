@@ -1,4 +1,8 @@
 class Step < ActiveRecord::Base
+  searchable do 
+    text :planstep
+  end
+
 	belongs_to :plan
  	# validates_presence_of :planstep
 	# validates_presence_of :plan_id
@@ -45,5 +49,8 @@ class Step < ActiveRecord::Base
 	  event.add_comment("Hardcoded comment")
 	  event
 	end
+
+  
+
 
 end

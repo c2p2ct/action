@@ -6,11 +6,18 @@ class PlansController < ApplicationController
   # GET /plans.json
   def index
     if params[:search]
-      @plans = Plan.search(params[:search]).order("created_at DESC")
-
+      # @plans = Plan.search(params[:search]).order("created_at DESC")
+      @search = Plan.search do
+        fulltext params[:search]
+        paginate :page => params[:page], :per_page => 10
+      end
+       @plans = @search.results
+       # redirect_to plans_path
     else    
       @plans = Plan.all
+      @plans = Plan.paginate(:page => params[:page], :per_page => 10)
     end
+    puts "==========HELLO plans-index"
   end
 
   # GET /plans/1
@@ -27,14 +34,63 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:plan])
     @steps = @plan.steps
     #loop through plan steps
+    
+      # Create a calendar with an event (standard method)
+      cal = Icalendar::Calendar.new
+      cal.event do |e|
+        e.dtstart     = Icalendar::Values::Date.new('20150101')
+        e.dtend       = Icalendar::Values::Date.new('20150101')
+        e.summary     = "First action app plan"
+        e.description = "Here is the action to take..."
+        e.ip_class    = "PRIVATE"
+      end
+
+      cal.publish
 
     #insert calendar events OR insert 
+    ics = "BEGIN:VCALENDAR
+    VERSION:2.0
+    PRODID:-//bobbin v0.1//NONSGML iCal Writer//EN
+    CALSCALE:GREGORIAN
+    METHOD:PUBLISH
+    BEGIN:VEVENT
+    DTSTART:20150101T080000Z
+    DTEND:20150101T110000Z
+    DTSTAMP:20151130T213238Z
+    UID:1285935469767a7c7c1a9b3f0df8003a@yoursever.com
+    CREATED:20151130T213238Z
+    DESCRIPTION:Example event 1
+    LAST-MODIFIED:20151130T213238Z
+    SEQUENCE:0
+    STATUS:CONFIRMED
+    SUMMARY:Example event 1
+    TRANSP:OPAQUE
+    END:VEVENT
+    BEGIN:VEVENT
+    DTSTART:20150101T120000Z
+    DTEND:20150101T130000Z
+    DTSTAMP:20151130T213238Z
+    UID:1285935469767a7c7c1a9b3f0df8003b@yoursever.com
+    CREATED:20151130T213238Z
+    DESCRIPTION:Example event 2
+    LAST-MODIFIED:20151130T213238Z
+    SEQUENCE:0
+    STATUS:CONFIRMED
+    SUMMARY:Example event 2
+    TRANSP:OPAQUE
+    END:VEVENT
+    END:VCALENDAR"
 
+    # Plan.make_ical
 
     redirect_to @plan
     #success message
   end
 
+  def write_ics
+
+  end
+ 
 
   # GET /plans/new
   def new

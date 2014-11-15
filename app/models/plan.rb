@@ -1,6 +1,9 @@
 class Plan < ActiveRecord::Base
-
-	mount_uploader :picture, PictureUploader
+  searchable do 
+    text :name, :description
+  end
+	
+  mount_uploader :picture, PictureUploader
 	has_many :steps
 	has_many :comments
   accepts_nested_attributes_for :steps
@@ -15,9 +18,23 @@ class Plan < ActiveRecord::Base
   #   new_record?
   # end
 
+ #  def self.search(query)
+ #  		where("name like ?", "%#{query}%") 
+	# end
 
-  	def self.search(query)
-  		where("name like ?", "%#{query}%") 
-	end
+   def self.make_ical
+      @calendar = Icalendar::Calendar.new
+      event = Icalendar::Event.new
+      event.start = self.event.start_datetime.strftime("%Y%m%dT%H%M%S%Z")
+      event.end = self.event.end_datetime.strftime("%Y%m%dT%H%M%S%Z")
+      event.summary = self.event.topic.name
+      event.description = self.event.topic.description
+      event.location = self.event.location
+      @calendar.add event
+      @calendar.publish
+      file = File.new("tmp/ics_files/sample.ics", "w+")
+      file.write(@calendar.to_ical)
+      file.close
+  end
 
 end

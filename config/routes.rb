@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         get :add_to_calendar
       end
   end      
-
+  
 
   get 'pages/info'
   get '/about'    => 'high_voltage/pages#show', id: 'about'
@@ -22,10 +22,8 @@ Rails.application.routes.draw do
   get '/terms'    => 'high_voltage/pages#show', id: 'terms'
   get '/home', to: redirect('/')
 
-
   # root :to => 'high_voltage/pages#show', id: 'home'
-
-    root :to => redirect('/plans')
+  root :to => redirect('/plans')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

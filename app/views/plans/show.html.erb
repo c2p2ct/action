@@ -59,6 +59,8 @@
                 <p><a href= "/plans/" class="btn btn-primary btn-lg" role="button">Browse plans &raquo;</a></p>
             '.html_safe)%>
 
+    <script src="hideshow.js"></script>
+
             <div class="container">
               <div class="row">
                 <div class="col-md-4">
@@ -67,8 +69,6 @@
                   <p>
                 <%= link_to 'Add to Calendar', add_to_calendar_plan_path(plan:@plan.id), class: 'btn btn-success' %>
                   </p>
-
-                
                 </div>
                 <div class="col-md-4">
                   <h2>Heading</h2>
@@ -85,7 +85,6 @@
       </div>
     
     <script src="libs/jquery-1.4.4.js"></script>
-    <script src="hideshow.js"></script>
 
   </div>
   <!-- AllActionsPanel -->
@@ -98,4 +97,3 @@
 <% end %>
 
 <%= render 'comments/form' %>
-
