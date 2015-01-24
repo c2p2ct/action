@@ -1,8 +1,11 @@
 /.bundle
 /db/*.sqlite3
 /db/*.sqlite3-journal
-/log
 /tmp
+/log/*.log
+/log/*.lck
+/solr/development/data
+/solr/pids
 
 *~
 *.swp

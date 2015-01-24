@@ -22,19 +22,18 @@
 			  <!-- Default panel contents -->
 			  <div class="panel-heading">  <h4><%= link_to plan.name, plan %></h4></div>
 			  <div class="panel-body">
-			    <p> 
 			    	<table class ="table">
 				       <tr> 
-				     	<td><%= image_tag plan.picture_url, :width => '100px' if plan.picture.present?%></td>
-				     	<td><%= plan.description %> </br>
-				     	<strong>Weeks: <%= plan.duration %></strong></td>
-				       </tr></p>
-				     </table>
+				     	<td><%= link_to image_tag(plan.picture_url, :width => '100px'), plan if plan.picture.present?%></td>
+				     	<td><%= plan.description %> <br>
+				     	<td><strong>Weeks: <%= plan.duration %></strong></td>
+				       </tr>
+                                 </table>
 			  </div>
     	</div>
       </div>
     <% end %>
   </div>
 <% end %>
-</div>
+<!-- </div> -->
 <!-- </div> -->
