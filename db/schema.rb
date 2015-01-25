@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923101056) do
+ActiveRecord::Schema.define(version: 20150124233056) do
 
   create_table "comments", force: true do |t|
     t.string   "user_name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140923101056) do
     t.string   "slug"
     t.text     "amazonlink"
     t.integer  "user_id"
+    t.integer  "popularity",  default: 0
   end
 
   add_index "plans", ["user_id"], name: "index_plans_on_user_id"

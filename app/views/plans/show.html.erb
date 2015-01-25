@@ -7,7 +7,7 @@
             <td> <%= image_tag(@plan.picture_url, :width => "50%" ) if @plan.picture.present? %> </td>
             <td><h1>Action Plan: </br><%= @plan.name %> </h1>
              <!--    <p><a class="btn btn-success btn-lg" role="button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Action_App_Step1&add=julia.clavien@gmail.com&location=Somewhere&calendar-label=Outgoing">Take Action!</a></p> </td> -->
-               <p><a class="btn btn-success btn-lg" role="button" href="">Take Action!</a></p> </td>
+               <p><a class="btn btn-success btn-lg take-action-button" role="button" href="">Take Action!</a></p> </td>
           </tr>
          </table>   
       </div>
@@ -41,7 +41,7 @@
             <p>
               <!-- <a id='clickAllActionsPanel' class="btn btn-success btn-lg" role="button" href="#">Take Action!</a> -->
             </p>
-             <input type="button" value="Take Action!" id="toggleButton" class="btn btn-success btn-lg" role="button"> </td>
+             <input type="button" value="Take Action!" id="toggleButton" class="btn btn-success btn-lg take-action-button" role="button"> </td>
            </div>
       </div>
       </div>
@@ -58,8 +58,6 @@
                <p>Step 3: Take action!</p>
                 <p><a href= "/plans/" class="btn btn-primary btn-lg" role="button">Browse plans &raquo;</a></p>
             '.html_safe)%>
-
-    <script src="hideshow.js"></script>
 
             <div class="container">
               <div class="row">
@@ -84,8 +82,6 @@
         </br>
       </div>
     
-    <script src="libs/jquery-1.4.4.js"></script>
-
   </div>
   <!-- AllActionsPanel -->
 

@@ -14,6 +14,20 @@
 //= require jquery_ujs
 
 //= require turbolinks
+//= require_self
 //= require_tree .
 
-div.hidden { display: none; }
+var actionApp = {}
+actionApp.initializers = []
+actionApp.initialize = function() {
+  $(this.initializers).each(function(i, e) {
+    e.call(this);
+  });
+}
+
+$(document).ready(function() {
+  actionApp.initialize()
+});
+$(document).on("page:load", function() {
+  actionApp.initialize()
+});
