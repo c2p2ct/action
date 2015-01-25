@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
- before_action :set_plan, only: [:show, :edit, :update, :destroy]
+ before_action :set_plan, only: [:show, :edit, :update, :destroy, :increase_popularity]
  skip_before_action :authenticate_user!
 
   # GET /plans
@@ -127,6 +127,16 @@ class PlansController < ApplicationController
         format.json { render :show, status: :ok, location: @plan }
       else
         format.html { render :edit }
+        format.json { render json: @plan.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def increase_popularity
+    respond_to do |format|
+      if @plan.update(popularity: @plan.popularity + 1)
+        format.json { head :ok }
+      else
         format.json { render json: @plan.errors, status: :unprocessable_entity }
       end
     end

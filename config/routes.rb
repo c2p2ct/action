@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :plans do
       member do
         get :add_to_calendar
+        put :increase_popularity, as: :increase_popularity_of
       end
   end      
   
