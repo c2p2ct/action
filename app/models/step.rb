@@ -3,7 +3,12 @@ class Step < ActiveRecord::Base
     text :planstep
   end
 
-	belongs_to :plan
+  belongs_to :plan
+
+  after_save do
+    Sunspot.index! plan
+  end
+
  	# validates_presence_of :planstep
 	# validates_presence_of :plan_id
 

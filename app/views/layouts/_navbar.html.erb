@@ -30,16 +30,12 @@
           </li>
 
           <li>
-            <form class="navbar-form navbar-left" role="search">
+            <%= form_tag plans_path, :method => :get, class: 'navbar-form navbar-left', role: 'search' do %>
               <div class="form-group">
-                <%= form_tag root_path, :method => :get do %>
-                  <p>
-                    <%= text_field_tag :search, params[:search],  placeholder: "Search", class: "form-control" %>
-                    <%= submit_tag "Search", :name => nil, class:'btn btn-default' %>
-                  </p>
-                <% end %>
+                <%= text_field_tag :search, params[:search],  placeholder: "Search", class: "form-control" %>
+                <%= submit_tag "Search", :name => nil, class:'btn btn-default' %>
               </div>
-            </form>
+            <% end %>
           </li>
       </ul>
     </div>

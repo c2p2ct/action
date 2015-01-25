@@ -1,18 +1,22 @@
 class Plan < ActiveRecord::Base
   searchable do 
     text :name, :description
+    text :plansteps do
+      steps.map(&:planstep).select { |s| s.present? }
+    end
+    integer :popularity
   end
 	
   mount_uploader :picture, PictureUploader
-	has_many :steps
-	has_many :comments
+  has_many :steps
+  has_many :comments
   accepts_nested_attributes_for :steps
   
- 	extend FriendlyId
-  	friendly_id :name, use: :slugged
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
-  	validates_presence_of :name
-  	validates_presence_of :description
+  validates_presence_of :name
+  validates_presence_of :description
 
   # def should_generate_new_friendly_id?
   #   new_record?
