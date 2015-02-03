@@ -19,7 +19,7 @@ class Plan < ActiveRecord::Base
   validates_presence_of :description
 
   scope :search, ->(kwds) do
-    clause = ["plans.name", "plans.description", "steps.planstep"].map { |a| sanitize_sql(["#{a} LIKE lower('%%%s%%')", kwds.downcase]) }.join(" OR ")
+    clause = ["plans.name", "plans.description", "steps.planstep"].map { |a| sanitize_sql(["lower(#{a}) LIKE '%%%s%%'", kwds.downcase]) }.join(" OR ")
     joins("LEFT OUTER JOIN steps on steps.plan_id = plans.id")
     .where(clause)
     .uniq
