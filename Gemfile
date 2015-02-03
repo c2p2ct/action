@@ -33,9 +33,8 @@ gem 'acts-as-taggable-on'
 
 gem 'will_paginate', '~> 3.0'
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
-
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 # gem 'fullcalendar-rails'
 gem 'icalendar', '~> 2.1.0'

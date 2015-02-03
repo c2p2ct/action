@@ -1,11 +1,13 @@
 class Plan < ActiveRecord::Base
-  searchable do 
-    text :name, :description
-    text :plansteps do
-      steps.map(&:planstep).select { |s| s.present? }
-    end
-    integer :popularity
-  end
+  include Searchable
+
+  #searchable do 
+  #  text :name, :description
+  #  text :plansteps do
+  #    steps.map(&:planstep).select { |s| s.present? }
+  #  end
+  #  integer :popularity
+  #end
 	
   mount_uploader :picture, PictureUploader
   has_many :steps
@@ -26,6 +28,7 @@ class Plan < ActiveRecord::Base
  #  		where("name like ?", "%#{query}%") 
 	# end
 
+
    def self.make_ical
       @calendar = Icalendar::Calendar.new
       event = Icalendar::Event.new
@@ -41,4 +44,12 @@ class Plan < ActiveRecord::Base
       file.close
   end
 
+  def as_indexed_json(options={})
+    as_json(
+      only: [:id, :name, :description, :popularity],
+      include: [:steps]
+    )
+  end
 end
+
+Plan.import

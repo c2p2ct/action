@@ -1,13 +1,11 @@
 class Step < ActiveRecord::Base
-  searchable do 
-    text :planstep
-  end
+  include Searchable
+
+  #searchable do 
+  #  text :planstep
+  #end
 
   belongs_to :plan
-
-  after_save do
-    Sunspot.index! plan
-  end
 
  	# validates_presence_of :planstep
 	# validates_presence_of :plan_id
@@ -39,6 +37,10 @@ class Step < ActiveRecord::Base
 	#   event
 	# end
 
+  def as_indexed_json(options={})
+    as_json(only: [:id, :planstep])
+  end
+      
 # Convert to iCalendar
 	def to_ics
 	  event = Icalendar::Event.new
@@ -54,8 +56,6 @@ class Step < ActiveRecord::Base
 	  event.add_comment("Hardcoded comment")
 	  event
 	end
-
-  
-
-
 end
+
+Step.import

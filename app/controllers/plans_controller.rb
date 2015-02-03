@@ -5,19 +5,18 @@ class PlansController < ApplicationController
   # GET /plans
   # GET /plans.json
   def index
-    if !params[:search].blank?
+    if params[:search].present?
       # @plans = Plan.search(params[:search]).order("created_at DESC")
-      @search = Plan.search do
-        fulltext params[:search]
-        order_by :popularity, :desc
-        paginate :page => params[:page] || 1, :per_page => 10
-      end
-       @plans = @search.results
-       # redirect_to plans_path
+      #@search = Plan.search do
+      #  fulltext params[:search]
+      #  order_by :popularity, :desc
+      #  paginate :page => params[:page] || 1, :per_page => 10
+      #end
+      @plans = Plan.search({ query: { match: { _all: params[:search] } }, sort: [ { popularity: 'desc' } ] }).page(params[:page]).per(10).records
+      #redirect_to plans_path
     else    
       @plans = Plan.order(popularity: :desc).paginate(:page => params[:page], :per_page => 10)
     end
-    puts "==========HELLO plans-index"
   end
 
   # GET /plans/1
