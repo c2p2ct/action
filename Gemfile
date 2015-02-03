@@ -27,7 +27,7 @@ gem 'heroku', '~> 3.8.4'
 gem 'devise'
 gem 'rolify'
 gem 'cancan'
-gem "twitter-bootstrap-rails"
+#gem "twitter-bootstrap-rails"
 gem 'high_voltage', '~> 2.2.0'
 gem 'acts-as-taggable-on'
 
