@@ -5,6 +5,7 @@ class PlansController < ApplicationController
   # GET /plans
   # GET /plans.json
   def index
+    @plans = Plan.order(popularity: :desc)
     if params[:search].present?
       # @plans = Plan.search(params[:search]).order("created_at DESC")
       #@search = Plan.search do
@@ -12,11 +13,10 @@ class PlansController < ApplicationController
       #  order_by :popularity, :desc
       #  paginate :page => params[:page] || 1, :per_page => 10
       #end
-      @plans = Plan.search({ query: { match: { _all: params[:search] } }, sort: [ { popularity: 'desc' } ] }).page(params[:page]).per(10).records
+      @plans = @plans.search(params[:search].strip)
       #redirect_to plans_path
-    else    
-      @plans = Plan.order(popularity: :desc).paginate(:page => params[:page], :per_page => 10)
     end
+    @plans = @plans.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /plans/1

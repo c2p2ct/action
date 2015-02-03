@@ -1,6 +1,4 @@
 class Plan < ActiveRecord::Base
-  include Searchable
-
   #searchable do 
   #  text :name, :description
   #  text :plansteps do
@@ -20,6 +18,12 @@ class Plan < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :description
 
+  scope :search, ->(kwds) do
+    clause = ["plans.name", "plans.description", "steps.planstep"].map { |a| sanitize_sql(["#{a} LIKE lower('%%%s%%')", kwds.downcase]) }.join(" OR ")
+    joins("LEFT OUTER JOIN steps on steps.plan_id = plans.id")
+    .where(clause)
+    .uniq
+  end
   # def should_generate_new_friendly_id?
   #   new_record?
   # end
@@ -51,5 +55,3 @@ class Plan < ActiveRecord::Base
     )
   end
 end
-
-Plan.import

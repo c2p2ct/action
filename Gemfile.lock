@@ -75,31 +75,15 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    elasticsearch (1.0.6)
-      elasticsearch-api (= 1.0.6)
-      elasticsearch-transport (= 1.0.6)
-    elasticsearch-api (1.0.6)
-      multi_json
-    elasticsearch-model (0.1.6)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.6)
-    elasticsearch-transport (1.0.6)
-      faraday
-      multi_json
     erubis (2.7.0)
     excon (0.37.0)
     execjs (2.2.1)
-    faraday (0.9.1)
-      multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     haml (4.0.5)
       tilt
-    hashie (3.3.2)
     heroku (3.8.4)
       heroku-api (~> 0.3.17)
       launchy (>= 0.3.2)
@@ -140,7 +124,6 @@ GEM
     mini_portile (0.6.0)
     minitest (5.3.5)
     multi_json (1.10.1)
-    multipart-post (2.0.0)
     nested_form (0.3.2)
     netrc (0.7.7)
     nokogiri (1.6.2.1)
@@ -274,8 +257,6 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.0.0)
   devise
-  elasticsearch-model
-  elasticsearch-rails
   friendly_id (~> 5.0.0)
   heroku (~> 3.8.4)
   high_voltage (~> 2.2.0)

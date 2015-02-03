@@ -1,6 +1,4 @@
 class Step < ActiveRecord::Base
-  include Searchable
-
   #searchable do 
   #  text :planstep
   #end
@@ -57,5 +55,3 @@ class Step < ActiveRecord::Base
 	  event
 	end
 end
-
-Step.import
