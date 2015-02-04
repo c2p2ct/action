@@ -172,7 +172,7 @@ class PlansController < ApplicationController
     end
 
     def add_sequences
-      @plan.try { |p| p.steps.each_with_index { |step, idx| step.sequence = idx + 1 } }
+      @plan.try { |p| p.steps.reject { |step| step.marked_for_destruction? }.each_with_index { |step, idx| step.sequence = idx + 1 } }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
