@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
- before_action :set_plan, only: [:show, :edit, :update, :destroy, :increase_popularity]
+ before_action :load_models, only: [:update, :destroy, :increase_popularity]
+ before_action :load_models_and_build_associations, only: [:edit, :show]
  skip_before_action :authenticate_user!
 
   # GET /plans
@@ -157,13 +158,16 @@ class PlansController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_plan
+    def load_models
       @plan = Plan.friendly.find(params[:id])
-      
       @steps = @plan.steps.all
-      @step = @plan.steps.build
-
       @comments = @plan.comments.all
+    end
+
+    def load_models_and_build_associations
+      load_models 
+
+      @step = @plan.steps.build
       @comment = @plan.comments.build
     end
 
