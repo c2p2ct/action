@@ -104,6 +104,7 @@ class PlansController < ApplicationController
   # POST /plans.json
   def create
     @plan = Plan.new(plan_params)
+    add_sequences
     
     # @plan.user = current_user 
     respond_to do |format|
@@ -120,8 +121,11 @@ class PlansController < ApplicationController
   # PATCH/PUT /plans/1
   # PATCH/PUT /plans/1.json
   def update
+    @plan.assign_attributes(plan_params)
+    add_sequences
+
     respond_to do |format|
-      if @plan.update(plan_params)
+      if @plan.save
         format.html { redirect_to @plan, notice: 'Plan was successfully updated.' }
         format.json { render :show, status: :ok, location: @plan }
       else
@@ -161,6 +165,10 @@ class PlansController < ApplicationController
 
       @comments = @plan.comments.all
       @comment = @plan.comments.build
+    end
+
+    def add_sequences
+      @plan.try { |p| p.steps.each_with_index { |step, idx| step.sequence = idx + 1 } }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
